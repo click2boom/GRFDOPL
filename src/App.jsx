@@ -8,7 +8,7 @@ const App = () => {
   const [proxyWithFileUrl, setProxyWithFileUrl] = useState('')
   const [author, setAuthor] = useState('')
   const [project, setProject] = useState('')
-  const [isSideOpen, setIsSideOpen] = useState(false)
+  const [isSideOpen, setIsSideOpen] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
   useEffect(() => {
     setIsMobile(window.innerWidth < window.innerHeight)

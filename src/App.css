@@ -7,6 +7,7 @@ input:focus {
 }
 
 :root {
+  font-size: 1rem;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -156,6 +157,9 @@ button#history {
 
 /* PC */
 @media (orientation: landscape) {
+  :root {
+    font-size: 2rem;
+  }
   button#history {
   right: -2rem;
   top: 2rem;
@@ -180,8 +184,9 @@ section#view {
 
 /* Mobile */
 @media (orientation: portrait) {
+
   :root {
-    font-size: 2rem;
+    font-size: .5rem;
   }
 
   input,

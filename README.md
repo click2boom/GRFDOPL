@@ -13,7 +13,7 @@ pnpm preview
 1. #### EdgeOne
 
 2. #### Vercel
-
+    [Vercel New](https://vercel.com/new/import?framework=vite&hasTrialAvailable=1&project-name=grfdopl&remainingProjects=1&s=https%3A%2F%2Fgithub.com%2Fclick2boom%2FGRFDOPL&teamSlug=wenjieaha-outlookcoms-projects&totalProjects=1)
 
 ### Steps
 1. Open *http://localhost:4173/*
