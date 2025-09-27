@@ -67,6 +67,7 @@ const App = () => {
   return <>
 
     <section id='control'>
+
       <form onSubmit={handleSubmit} >
         <input type="text"
           placeholder="Typeing Url ... "

@@ -147,8 +147,9 @@ section#view {
 }
 button#history {
   position: absolute;
-  background-color: rgb(116, 123, 255);
   font-size: larger;
+  display: flex;
+  justify-content: center;
   transition: all .2s;
 }
 
@@ -160,9 +161,10 @@ button#history {
   top: 2rem;
   border-radius: 1rem;
   padding: .5rem;
+  width: 5rem;
 }
 section#view {
-  left: 0;
+  left:-10rem;
   top: 0;
   width: 15rem;
   height: 100%;
@@ -171,7 +173,7 @@ section#view {
 }
 .hidden {
   border-right: 1px solid transparent;
-  transform: translateX(calc(4rem - 100%));
+  transform: translateX(calc(100% - 6rem));
 }
 
 }
@@ -232,8 +234,6 @@ section#view {
   }
 
   button#history {
-    backdrop-filter: blur(10px);
-    justify-content: center;
     top:100%;
     left: .5rem;
     width: 5rem;
