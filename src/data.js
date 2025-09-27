@@ -14,4 +14,6 @@ const imagesApi = {
     desktop:'https://t.alcy.cc/moez',
     mobile:'https://t.alcy.cc/moemp'
 }
+
+
 export {proxys,imagesApi}

@@ -41,7 +41,7 @@ body {
 }
 
 input {
-  min-width: fit-content;
+  width: 100%;
 }
 
 button,
@@ -59,6 +59,7 @@ input {
   transition: all 0.25s;
   backdrop-filter: blur(10px);
 }
+
 
 button:hover,
 input:hover {
@@ -110,6 +111,8 @@ ul {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  padding: 0;
+
 }
 
 li>button {
@@ -140,12 +143,14 @@ button a:hover {
   transform: translateY(-1px);
   text-decoration: underline;
 }
+
 section#view {
   position: absolute;
   background-color: #1a1a1a8a;
   backdrop-filter: blur(10px);
   transition: all .2s ease-in-out;
 }
+
 button#history {
   position: absolute;
   font-size: larger;
@@ -153,6 +158,41 @@ button#history {
   justify-content: center;
   transition: all .2s;
 }
+form {
+  position: relative;
+  /* background-color: #fff; */
+}
+input{margin: 0;}
+ul#search_results {
+  position: absolute;
+  top: 100%;left: 0;
+  z-index: 1;
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+ul#search_results li{
+  display: flex;
+  flex-direction: row;
+  /* background-color: red; */
+  width: 100%;
+  gap: .4rem;
+}
+ul#search_results li>button{
+  padding:.4rem 1rem ;
+}
+ul#search_results li>button.line_data{
+  flex: 1;
+  color: #f9f9f97e;
+  text-align: left;
+}
+ul#search_results li>button.del_line{
+  color: rgba(255, 18, 18, 0.8);
+  width: min-content;
+}
+
 
 
 /* PC */
@@ -160,25 +200,28 @@ button#history {
   :root {
     font-size: 2rem;
   }
-  button#history {
-  right: -2rem;
-  top: 2rem;
-  border-radius: 1rem;
-  padding: .5rem;
-  width: 5rem;
-}
-section#view {
-  left:-10rem;
-  top: 0;
-  width: 15rem;
-  height: 100%;
-  border-right: 1px solid #747bff;
 
-}
-.hidden {
-  border-right: 1px solid transparent;
-  transform: translateX(calc(100% - 6rem));
-}
+  button#history {
+    right: -2rem;
+    top: 2rem;
+    border-radius: 1rem;
+    padding: .5rem;
+    width: 5rem;
+  }
+
+  section#view {
+    left: -10rem;
+    top: 0;
+    width: 15rem;
+    height: 100%;
+    border-right: 1px solid #747bff;
+
+  }
+
+  .hidden {
+    border-right: 1px solid transparent;
+    transform: translateX(calc(100% - 6rem));
+  }
 
 }
 
@@ -239,19 +282,20 @@ section#view {
   }
 
   button#history {
-    top:100%;
+    top: 100%;
     left: .5rem;
     width: 5rem;
     transition: all .2s;
-    border-bottom: 2px solid #535bf2 ;
-    border-radius:0 0 1rem 1rem
+    border-bottom: 2px solid #535bf2;
+    border-radius: 0 0 1rem 1rem
   }
 
   .hidden {
     transform: translateY(calc(100% - 3rem));
     /* border-bottom: 1px solid transparent; */
   }
-  .hidden button#history{
+
+  .hidden button#history {
     background-color: #747bff;
     color: #f9f9f9;
     width: 100%;
@@ -260,7 +304,8 @@ section#view {
 
 
 
-}
+  }
+
   section#view {
     left: 0;
     top: calc(1px - 100%);
