@@ -43,14 +43,14 @@ const App = () => {
     }
     console.log(author, project);
     analyseInput(inputValue)
+    addHistory()
   }
   const analyseInput = (value) => {
-    if (value.startsWith('https://')) {
-      setFileUrl(value)
-    }
+
     if (proxyWithFileUrl) {
       download(proxyWithFileUrl)
       console.log('Download:', proxyWithFileUrl);
+      setFileUrl('')
       return
     }
     const parts = value.split('/')
@@ -83,6 +83,9 @@ const App = () => {
       setFiles('')
       return
     }
+    if (value.startsWith('https://')) {
+      setFileUrl(value)
+    }
 
     console.log(value);
     analyseInput(value)
@@ -93,6 +96,10 @@ const App = () => {
     if (!proxy) return
     console.log('submit');
     matchInputValue(inputValue)
+    addHistory()
+    setFileUrl('')
+    setInputValue('')
+
   }
 
   const onFileClick = (line) => {
@@ -102,11 +109,21 @@ const App = () => {
       .replace('{file}', line)
     setFileUrl(url)
     download(proxyWithFileUrl)
+    addHistory()
+    setFileUrl('')
+    setInputValue('')
+  }
+  const addHistory = ()=>{
+    if (fileUrl) {
+      historyDispatch({type:'add',payload: { data:{author,project,fileUrl} } })
+    }
+    historyDispatch({type:'add',payload: { data:{author,project,fileUrl} } })
   }
   const onProjectClick = (line) => {
     inputRef.current.value = `${author}/${line}`
     setInputValue(inputRef.current.value)
     analyseInput(inputValue)
+    addHistory()
   }
   const handleInputChange = (e) => {
     e.preventDefault()
@@ -117,11 +134,12 @@ const App = () => {
   }
 
   return <>
-    <i id='info'>
+    {!author||<i id='info'>
       <h3>{!author || `Author: ${author}`}</h3>
+      <h3>{!proxy || `Proxy: ${proxy}`}</h3>
       <h3>{!project || `Project: ${project}`}</h3>
       <h3>{!fileUrl || `FileUrl: ${fileUrl}`}</h3>
-    </i>
+    </i>}
     <Context.Provider value={{
       setProxy, setOpen, setInputValue,
       history, proxy, open, projects, files, inputValue, inputRef,
@@ -136,7 +154,7 @@ const App = () => {
         </form>
         <ProxyList />
       </section>
-      <HistoryView />
+      {/* <HistoryView /> */}
     </Context.Provider>
     <Background />
   </>

@@ -4,7 +4,7 @@ import { useContext } from "react"
 import Context from "../Context"
 
 const HistoryView = () => {
-  const { history, onHistoryLineClick, historyDispatch,open, setOpen } = useContext(Context)
+  const { history, onHistoryLineClick, historyDispatch, open, setOpen } = useContext(Context)
 
   const HistoryList = () => <ul id="search_history">
     {history.map((line, index) =>
@@ -12,8 +12,10 @@ const HistoryView = () => {
       >
         <button className='del_line' onClick={() => historyDispatch({ type: 'del', payload: { key: line.key } })}>del</button>
         <span className='line_data' onClick={() => onHistoryLineClick(line.data)}>
-          <button className='author_line_history' onClick={() => onHistoryLineClick(line.data)}>{line.data.author}</button>
-          {!line.data.project ||<button className='project_line_history' onClick={() => onHistoryLineClick(line.data)}>{line.data.project}</button>}
+          {!line.data.author || <button className='author_line_history' onClick={() => onHistoryLineClick(line.data)}>{line.data.author}</button>}
+          {!line.data.project || <button className='project_line_history' onClick={() => onHistoryLineClick(line.data)}>{line.data.project}</button>}
+          {!line.data.file || <button className='file_line_history' onClick={() => onHistoryLineClick(line.data)}>{line.data.file}</button>}
+
         </span>
       </li>
 

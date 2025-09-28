@@ -12,8 +12,8 @@ const Search = () => {
     console.log(files);
     
     const SearchList=()=><span id="search_list">
-        {<FileList lines={files} onClick={onFileClick} />}
-        {files.length || <ProjectList lines={projects} onClick={onProjectClick} />}
+        {projects.length==0 ||<ProjectList lines={projects} onClick={onProjectClick} />}
+        {files.length==0 ||<FileList lines={files} onClick={onFileClick} /> }
 
     </span>
     return (<>

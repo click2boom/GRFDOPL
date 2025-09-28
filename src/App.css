@@ -91,12 +91,13 @@ button:focus-visible {
   flex-direction: column;
   padding: 1rem;
   align-items: start;
-  backdrop-filter: blur(10px);
   border-radius: .5rem;
-  background-color: #1a1a1a;
+  /* background-color: #1a1a1a; */
+  backdrop-filter: blur(10px);
   width: min-content;
 }
 h3 {
+  min-width: 15rem;
   padding: 0;margin: 0;
   text-align: left;
   font-size: 1rem;
@@ -121,10 +122,6 @@ ul {
   justify-content: center;
   gap: 1rem;
   padding: 0;
-}
-ul {
-  overflow-y: auto;
-}
 li>button {
   display: flex;
   flex-direction: column;
@@ -199,12 +196,14 @@ ul#search_history li>.line_data{
   display: flex;
 }
 ul#search_history li .line_data>button.author_line_history,
-ul#search_history li .line_data>button.project_line_history
+ul#search_history li .line_data>button.project_line_history,
+ul#search_history li .line_data>button.file_line_history
 {
   display: flex;
   flex: 1;
   text-align: left;
-  overflow-y: auto;
+  overflow-x: auto;
+  height: 2rem;
 }
 ul#search_history li>button.del_line{
   color: rgba(255, 18, 18, 0.8);
@@ -212,9 +211,10 @@ ul#search_history li>button.del_line{
 }
 #search_list{
   position: absolute;
-  top:calc(100% - 1rem);
+  top:calc( 100% + .2rem);
   /* left: 0; */
   display: flex;
+  align-items: start;
   gap: .8rem;
   z-index: 1;
   width: fit-content;
@@ -223,8 +223,10 @@ ul#search_history li>button.del_line{
 #project_list,
 #file_list
 {
+  margin: 0;
   display: flex;
   overflow-y:auto;
+  height: 20rem;
   flex-direction: column;
   justify-content: start;
   gap: .5rem;

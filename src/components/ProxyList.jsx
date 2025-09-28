@@ -8,8 +8,10 @@ const ProxyList = () => {
     <ul>
         {proxys.map((_proxy, index) =>
           <ProxyCard key={index}
-            url={_proxy.url} name={_proxy.name}
-            proxy={proxy} setProxy={setProxy}
+            proxy={proxy}
+            name={_proxy.name}
+            url={_proxy.url}
+             setProxy={setProxy}
           />
         )}
       </ul>
