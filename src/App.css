@@ -19,6 +19,7 @@ input:focus {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* overflow: hidden; */
 }
 
 a {
@@ -71,7 +72,7 @@ input:hover {
 button:active,
 input:active,
 input:focus {
-  transform: scale(1.1);
+  transform: scale(1.04);
   background-color: #535bf2;
   color: #1a1a1a;
 
@@ -82,27 +83,35 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-
-  a:hover {
-    color: #747bff;
-  }
-
-  button {
-    background-color: #f9f9f9;
-  }
+#info{
+  position: absolute;
+  top: 1rem;
+  left: calc( 50% - min-content);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  align-items: start;
+  backdrop-filter: blur(10px);
+  border-radius: .5rem;
+  background-color: #1a1a1a;
+  width: min-content;
 }
- */
+h3 {
+  padding: 0;margin: 0;
+  text-align: left;
+  font-size: 1rem;
+  color: #646cff;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1; 
+  overflow: hidden;
 
+}
 
 #root {
   /* min-width: 400px; */
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
 }
 
@@ -112,15 +121,16 @@ ul {
   justify-content: center;
   gap: 1rem;
   padding: 0;
-
 }
-
+ul {
+  overflow-y: auto;
+}
 li>button {
   display: flex;
   flex-direction: column;
 }
 
-section#control {
+section#main {
   display: flex;
   flex-direction: column;
 }
@@ -146,15 +156,19 @@ button a:hover {
 
 section#view {
   position: absolute;
+  display: flex;
   background-color: #1a1a1a8a;
   backdrop-filter: blur(10px);
   transition: all .2s ease-in-out;
+  padding: 0 1rem;
+  z-index: 3;
 }
 
 button#history {
   position: absolute;
   font-size: larger;
   display: flex;
+  backdrop-filter: blur(10px);
   justify-content: center;
   transition: all .2s;
 }
@@ -163,34 +177,61 @@ form {
   /* background-color: #fff; */
 }
 input{margin: 0;}
-ul#search_results {
-  position: absolute;
-  top: 100%;left: 0;
-  z-index: 1;
+ul#search_history {
   width: 100%;
   /* background-color: red; */
   display: flex;
   flex-direction: column;
   gap: .2rem;
 }
-ul#search_results li{
+ul#search_history li{
   display: flex;
   flex-direction: row;
   /* background-color: red; */
   width: 100%;
   gap: .4rem;
 }
-ul#search_results li>button{
-  padding:.4rem 1rem ;
+ul#search_history li>button{
+  padding:.4rem;
 }
-ul#search_results li>button.line_data{
+ul#search_history li>.line_data{
   flex: 1;
-  color: #f9f9f97e;
-  text-align: left;
+  display: flex;
 }
-ul#search_results li>button.del_line{
+ul#search_history li .line_data>button.author_line_history,
+ul#search_history li .line_data>button.project_line_history
+{
+  display: flex;
+  flex: 1;
+  text-align: left;
+  overflow-y: auto;
+}
+ul#search_history li>button.del_line{
   color: rgba(255, 18, 18, 0.8);
   width: min-content;
+}
+#search_list{
+  position: absolute;
+  top:calc(100% - 1rem);
+  /* left: 0; */
+  display: flex;
+  gap: .8rem;
+  z-index: 1;
+  width: fit-content;
+  overflow: hidden;
+}
+#project_list,
+#file_list
+{
+  display: flex;
+  overflow-y:auto;
+  flex-direction: column;
+  justify-content: start;
+  gap: .5rem;
+  backdrop-filter: blur(10px);
+  padding: .5rem;
+  border-radius: .5rem;
+  /* border: none; */
 }
 
 
@@ -198,33 +239,52 @@ ul#search_results li>button.del_line{
 /* PC */
 @media (orientation: landscape) {
   :root {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   button#history {
-    right: -2rem;
+    right: -4rem;
     top: 2rem;
     border-radius: 1rem;
     padding: .5rem;
     width: 5rem;
+    transition: all .2s ease-in-out;
   }
 
   section#view {
-    left: -10rem;
+    left: 0;
     top: 0;
-    width: 15rem;
+    width: 20%;
     height: 100%;
-    border-right: 1px solid #747bff;
-
+    padding-left:100% ;
+    transform: translateX(calc(2rem - 100%));
+    /* border-left: 1px solid #747bff; */
   }
 
-  .hidden {
-    border-right: 1px solid transparent;
-    transform: translateX(calc(100% - 6rem));
+  section.hidden {
+    /* border-right: 1px solid transparent; */
+    transform: translateX(calc(2rem - 100% + 14rem)) !important;
+  }
+  section.hidden > button#history {
+    right: 1rem;
+    
   }
 
 }
-
+h5{
+color: red;
+}
+span.loading {
+  position: absolute;
+  display: flex;
+  top: calc(100% + .3rem);
+  left: 0;
+  padding: .3rem;
+  z-index: 3;
+  /* background-color: red; */
+  backdrop-filter: blur(10px);
+  border-radius: .4rem;
+}
 /* Mobile */
 @media (orientation: portrait) {
 

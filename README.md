@@ -25,3 +25,27 @@ pnpm preview
 3. Enter or Click Submit To Download File
 >Optional Select Proxy Node
 
+
+
+```python
+class SearchResults:
+    author:str
+    projects:list[str]
+    files:list[str]
+    def get_projects()->list[str]:
+        return projects
+    def set_projects()->None:
+    def get_files()->list[str]:
+        return files
+    def set_projects()->None:
+    
+    def get_list(author,*project):
+        
+        return 
+    def fetchProjects(author):
+        set_projects
+    def fetchFiles(author,project):
+        set_files
+
+
+```

@@ -14,6 +14,6 @@ const imagesApi = {
     desktop:'https://t.alcy.cc/moez',
     mobile:'https://t.alcy.cc/moemp'
 }
+const downloadApi = 'https://github.com/{author}/{project}/releases/latest/download/{file}'
 
-
-export {proxys,imagesApi}
+export {proxys,imagesApi,downloadApi}
